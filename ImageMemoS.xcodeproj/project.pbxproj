@@ -24,6 +24,9 @@
 		5263F4421FEBDD82006DEFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5263F4401FEBDD82006DEFC0 /* Main.storyboard */; };
 		5263F4471FEBDD82006DEFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5263F4461FEBDD82006DEFC0 /* Assets.xcassets */; };
 		5263F44A1FEBDD82006DEFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5263F4481FEBDD82006DEFC0 /* LaunchScreen.storyboard */; };
+		52D936B91FF27F8700C6F6E8 /* MemoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D936B81FF27F8700C6F6E8 /* MemoSelectViewController.swift */; };
+		52D936BB1FF27FB500C6F6E8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D936BA1FF27FB500C6F6E8 /* ImageViewController.swift */; };
+		52D936BD1FF27FD500C6F6E8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D936BC1FF27FD500C6F6E8 /* PlayerViewController.swift */; };
 		52E27A6E1FF2776300DEE411 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E27A6D1FF2776300DEE411 /* PhotosViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +69,9 @@
 		5263F44B1FEBDD82006DEFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5263F4501FEBDD83006DEFC0 /* ImageMemoSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageMemoSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5263F45B1FEBDD83006DEFC0 /* ImageMemoSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageMemoSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D936B81FF27F8700C6F6E8 /* MemoSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoSelectViewController.swift; sourceTree = "<group>"; };
+		52D936BA1FF27FB500C6F6E8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		52D936BC1FF27FD500C6F6E8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		52E27A6D1FF2776300DEE411 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +148,9 @@
 				52FB940E1FEBE560005FC64B /* Cell */,
 				5263F43E1FEBDD82006DEFC0 /* AlbumListViewController.swift */,
 				52E27A6D1FF2776300DEE411 /* PhotosViewController.swift */,
+				52D936B81FF27F8700C6F6E8 /* MemoSelectViewController.swift */,
+				52D936BA1FF27FB500C6F6E8 /* ImageViewController.swift */,
+				52D936BC1FF27FD500C6F6E8 /* PlayerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -317,7 +326,10 @@
 				5263F43F1FEBDD82006DEFC0 /* AlbumListViewController.swift in Sources */,
 				5257B1E01FEF5C6A00B0607F /* PhotoCollerction.swift in Sources */,
 				52E27A6E1FF2776300DEE411 /* PhotosViewController.swift in Sources */,
+				52D936B91FF27F8700C6F6E8 /* MemoSelectViewController.swift in Sources */,
+				52D936BD1FF27FD500C6F6E8 /* PlayerViewController.swift in Sources */,
 				5263F43D1FEBDD82006DEFC0 /* AppDelegate.swift in Sources */,
+				52D936BB1FF27FB500C6F6E8 /* ImageViewController.swift in Sources */,
 				5213A75C1FEBEDD2002F467C /* ImageMemoS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -57,7 +57,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Gkm-DV-aQ4" id="y0k-ft-Op9"/>
-                        <segue destination="JSV-HD-8AY" kind="show" identifier="toPhotosViewController" id="saf-Mm-NTa"/>
+                        <segue destination="JSV-HD-8AY" kind="show" identifier="toPhotosViewController" id="7sq-K8-aHM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,7 +67,7 @@
         <!--Photos View Controller-->
         <scene sceneID="BQy-aV-aPF">
             <objects>
-                <viewController storyboardIdentifier="PhotosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JSV-HD-8AY" customClass="PhotosViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JSV-HD-8AY" customClass="PhotosViewController" customModule="ImageMemoS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gwa-Gu-G2u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,9 +89,6 @@
                                     <constraint firstAttribute="height" constant="40" id="0v0-vF-jh3"/>
                                 </constraints>
                                 <state key="normal" image="navibar_back.png"/>
-                                <connections>
-                                    <action selector="exitTouchUpInside:" destination="JSV-HD-8AY" eventType="touchUpInside" id="Vz1-sd-sgr"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfn-ho-Pv2" userLabel="shareButton">
                                 <rect key="frame" x="332" y="37" width="28" height="28"/>
@@ -100,9 +97,6 @@
                                     <constraint firstAttribute="width" constant="28" id="jkQ-XF-yhm"/>
                                 </constraints>
                                 <state key="normal" image="share_button.png"/>
-                                <connections>
-                                    <action selector="shareTouchUpInside:" destination="JSV-HD-8AY" eventType="touchUpInside" id="Frm-5r-gZb"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKu-M1-DIp" userLabel="settingButton">
                                 <rect key="frame" x="332" y="37" width="28" height="28"/>
@@ -111,9 +105,6 @@
                                     <constraint firstAttribute="height" constant="28" id="elC-7A-tKG"/>
                                 </constraints>
                                 <state key="normal" image="setting_button.png"/>
-                                <connections>
-                                    <action selector="settingTouchUpInside:" destination="JSV-HD-8AY" eventType="touchUpInside" id="tRD-pf-lAS"/>
-                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nS2-aQ-Fhj">
                                 <rect key="frame" x="0.0" y="97" width="375" height="550"/>
@@ -190,11 +181,10 @@
                         <viewLayoutGuide key="safeArea" id="yzk-8e-a3D"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="nS2-aQ-Fhj" id="tt5-L6-wuF"/>
-                        <outlet property="settingButton" destination="KKu-M1-DIp" id="hLE-ej-N21"/>
-                        <outlet property="shareButton" destination="jfn-ho-Pv2" id="7O2-hU-mh4"/>
-                        <outlet property="titleLabel" destination="aVP-Te-u2f" id="Ts2-4k-DNp"/>
-                        <segue destination="3US-YO-ZYr" kind="show" identifier="toMemoSelectViewController" id="xAK-4A-KG8"/>
+                        <outlet property="collectionView" destination="nS2-aQ-Fhj" id="VvW-vj-xmF"/>
+                        <outlet property="settingButton" destination="KKu-M1-DIp" id="03l-KH-LVN"/>
+                        <outlet property="shareButton" destination="jfn-ho-Pv2" id="EvP-hD-NqK"/>
+                        <outlet property="titleLabel" destination="aVP-Te-u2f" id="6t7-ua-ZzP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFL-1Z-SIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -418,7 +408,6 @@
                                 </constraints>
                                 <state key="normal" image="share_button.png"/>
                                 <connections>
-                                    <action selector="settingTouchUpInside:" destination="JSV-HD-8AY" eventType="touchUpInside" id="yKS-EL-cmc"/>
                                     <action selector="shareTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="kUL-FX-vch"/>
                                 </connections>
                             </button>

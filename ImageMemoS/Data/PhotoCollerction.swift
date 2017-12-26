@@ -30,8 +30,8 @@ class PhotoCollection {
         self.selectNum = num
     }
     
-    public static func getTitle(collection: PHAssetCollection) -> NSString {
-        var title: NSString = collection.localizedTitle! as NSString
+    public static func getTitle(collection: PHAssetCollection) -> String {
+        var title = collection.localizedTitle! as String
         
         if isAllPhotos(collection: collection) {
             title = "すべての写真"
