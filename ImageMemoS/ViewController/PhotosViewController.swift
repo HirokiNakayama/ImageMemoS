@@ -57,7 +57,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
      */
     @IBAction func exitTouchUpInside(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     /**
@@ -73,7 +73,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
      */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //コレクションビューから識別子「CalendarCell」のセルを取得する
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         // セルの出力先View生成
@@ -127,7 +126,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             // 画像の保存
             PhotoCollection.setSelectNum(num: indexPath.row)
             
-            self.performSegue(withIdentifier: "toMemoSelectViewController", sender: self)
+            performSegue(withIdentifier: "toMemoSelectViewController", sender: self)
         } else {
             if selectArray.contains(indexPath) {
                 selectArray.remove(indexPath)
@@ -153,7 +152,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         alert.addAction(UIAlertAction(title: "キャンセル", style: .default) { (action:UIAlertAction) in
             self.changeSelectMode(selectMode: false)
         })
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     /**
@@ -220,7 +219,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             // 投稿後は選択モード解除
             self.changeSelectMode(selectMode: false)
         }
-        self.present(activityView, animated: true, completion: nil)
+        present(activityView, animated: true, completion: nil)
     }
     
     /**

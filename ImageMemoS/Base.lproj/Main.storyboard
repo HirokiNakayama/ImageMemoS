@@ -285,7 +285,7 @@
         <!--Memo Select View Controller-->
         <scene sceneID="clC-3v-kWD">
             <objects>
-                <viewController storyboardIdentifier="MemoSelectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3US-YO-ZYr" customClass="MemoSelectViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemoSelectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3US-YO-ZYr" customClass="MemoSelectViewController" customModule="ImageMemoS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5qJ-s9-MnZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,6 +300,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhm-X6-zwQ" userLabel="shareButton">
+                                <rect key="frame" x="332" y="37" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="hIe-sA-hsI"/>
+                                    <constraint firstAttribute="height" constant="28" id="w14-A1-cLM"/>
+                                </constraints>
+                                <state key="normal" image="share_button.png"/>
+                                <connections>
+                                    <action selector="shareTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="kUL-FX-vch"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZy-u0-xkB">
                                 <rect key="frame" x="10" y="31" width="40" height="40"/>
                                 <constraints>
@@ -309,13 +320,14 @@
                                 <state key="normal" image="navibar_back.png"/>
                                 <connections>
                                     <action selector="backButtonTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="EHH-R0-Dt7"/>
+                                    <action selector="exitTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="MDi-lR-hzY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uco-9f-ZSe">
                                 <rect key="frame" x="329" y="36" width="31" height="30"/>
                                 <state key="normal" title="完了"/>
                                 <connections>
-                                    <action selector="imputCompTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="Qi5-nM-GwT"/>
+                                    <action selector="inputCompTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="5FO-8S-CzD"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HcC-mt-dfO">
@@ -410,17 +422,6 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhm-X6-zwQ" userLabel="shareButton">
-                                <rect key="frame" x="332" y="37" width="28" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="28" id="hIe-sA-hsI"/>
-                                    <constraint firstAttribute="height" constant="28" id="w14-A1-cLM"/>
-                                </constraints>
-                                <state key="normal" image="share_button.png"/>
-                                <connections>
-                                    <action selector="shareTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="kUL-FX-vch"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -457,16 +458,15 @@
                         <viewLayoutGuide key="safeArea" id="kkd-j7-qrh"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="HcC-mt-dfO" id="U1v-uM-9pd"/>
-                        <outlet property="createDateView" destination="Q2p-W2-gRB" id="d1I-Id-iFH"/>
-                        <outlet property="imputCompButton" destination="Uco-9f-ZSe" id="5Mb-RZ-lBJ"/>
-                        <outlet property="memoBackView" destination="ehL-CI-KEa" id="GD4-PZ-C1g"/>
-                        <outlet property="memoTextView" destination="V74-QA-zLl" id="sWp-Hi-cu6"/>
-                        <outlet property="photoImage" destination="r2I-zH-E3Q" id="gT5-TR-GVX"/>
-                        <outlet property="photoImageMovieMark" destination="x6N-OY-YJ3" id="4BS-s4-mVQ"/>
-                        <outlet property="selectImageBorder" destination="aJA-A0-8vb" id="Slm-so-hLB"/>
-                        <outlet property="shareButton" destination="bhm-X6-zwQ" id="q1e-o6-1ji"/>
-                        <segue destination="Wes-Gw-wFh" kind="show" identifier="toImageViewController" id="XAF-Hj-QZc"/>
+                        <outlet property="collectionView" destination="HcC-mt-dfO" id="fDx-w2-bfb"/>
+                        <outlet property="createDateView" destination="Q2p-W2-gRB" id="KPk-Ri-rNv"/>
+                        <outlet property="inputCompButton" destination="Uco-9f-ZSe" id="Bad-cb-25W"/>
+                        <outlet property="memoBackView" destination="ehL-CI-KEa" id="MnP-wS-DBR"/>
+                        <outlet property="memoTextView" destination="V74-QA-zLl" id="iN7-Fb-jmh"/>
+                        <outlet property="photoImage" destination="r2I-zH-E3Q" id="bJ2-2f-GXQ"/>
+                        <outlet property="photoImageMovieMark" destination="x6N-OY-YJ3" id="QbA-gq-vqM"/>
+                        <outlet property="selectImageBorder" destination="aJA-A0-8vb" id="Ccs-xF-8uz"/>
+                        <outlet property="shareButton" destination="bhm-X6-zwQ" id="xP9-GT-sKg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNR-Zj-aXD" userLabel="First Responder" sceneMemberID="firstResponder"/>

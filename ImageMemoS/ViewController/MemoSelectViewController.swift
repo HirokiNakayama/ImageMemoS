@@ -7,29 +7,265 @@
 //
 
 import UIKit
+import Photos
 
-class MemoSelectViewController: UIViewController {
-
+class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var selectImageBorder: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet weak var memoBackView: UILabel!
+    @IBOutlet weak var inputCompButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var photoImageMovieMark: UIImageView!
+    @IBOutlet weak var createDateView: UITextView!
+    
+    private let MAX_HEADER_IMAGE_COUNT: Int = 5;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        // 選択中の画像囲みボーダー設定
+        selectImageBorder.layer.borderColor = UIColor.green.cgColor
+        selectImageBorder.layer.borderWidth = 2.0
+        
+        inputCompButton.isHidden = true
+        shareButton.isHidden = false
+        
+        // 画像タップイベント設定
+        photoImage.isUserInteractionEnabled = true;
+        let singleTap = UITapGestureRecognizer(
+            target: self, action: #selector(imageViewTap(_:)))
+        photoImage.addGestureRecognizer(singleTap)
+        
+        // キーボード表示イベント設定
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardWasShown), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
+        
+        // スワイプイベント設定
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(rightSwipeGesture))
+        rightSwipe.direction = .right
+        view.addGestureRecognizer(rightSwipe)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipeGesture))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    /**
+     * (delegate) CollectionView Cell 最大数
+     */
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
+        var count = assets.count;
+        // 最大５画像表示
+        if (count > MAX_HEADER_IMAGE_COUNT) {
+            count = MAX_HEADER_IMAGE_COUNT;
+        }
+        return count
     }
-    */
-
+    
+    /**
+     * (delegate) CollectionView Cell 描画
+     */
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        
+        // セルの出力先View生成
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        let checkView = cell.viewWithTag(2) as! UIImageView
+        let movieView = cell.viewWithTag(3) as! UIImageView
+        
+        imageView.image = nil
+        checkView.isHidden = true
+        movieView.isHidden = true
+        
+        // 表示位置計算
+        let index = (PhotoCollection.getSelectNum() - ((MAX_HEADER_IMAGE_COUNT - 1) / 2)) + indexPath.row
+        
+        let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
+        if 0 <= index && index < assets.count {
+            // 画像が存在したら表示
+            let asset = assets.object(at: index)
+            let options = PHImageRequestOptions()
+            options.isNetworkAccessAllowed = true
+            PHImageManager().requestImage(for: asset,
+                                          targetSize: cell.frame.size,
+                                          contentMode: .aspectFit,
+                                          options: options,
+                                          resultHandler: { (image, info) in
+                                            if image != nil {
+                                                imageView.image = image
+                                            }
+            })
+            // メモ済みマーク設定
+            checkView.isHidden = true
+            
+            // 動画マーク設定
+            if asset.mediaType == .video {
+                movieView.isHidden = false;
+            }
+        }
+        return cell
+    }
+    
+    /**
+     * (delegate) CollectionView Cell タップ
+     */
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if photoImage.frame.origin.y == memoBackView.frame.origin.y {
+            // キーボード入力中はタップ不可
+            return;
+        }
+        
+        let select = (PhotoCollection.getSelectNum() - ((MAX_HEADER_IMAGE_COUNT - 1) / 2)) + indexPath.row;
+        if (0 <= select) {
+            load(select: select);
+        }
+    }
+    
+    @IBAction func inputCompTouchUpInside(_ sender: Any) {
+        // todo メモの保存
+        
+        // キーボードを閉じる
+        resignFirstResponder()
+        
+        // チェックマーク更新のためリロード
+        collectionView.reloadData();
+    }
+    
+    @IBAction func shareTouchUpInside(_ sender: Any) {
+        
+    }
+    
+    @IBAction func exitTouchUpInside(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    /**
+     * 右方向にスワイプ
+     */
+    @objc private func rightSwipeGesture() {
+        if photoImage.frame.origin.y == memoBackView.frame.origin.y {
+            // キーボード入力中は不可
+            return;
+        }
+        load(select:PhotoCollection.getSelectNum() - 1);
+    }
+    
+    /**
+     * 左方向にスワイプ
+     */
+    @objc private func leftSwipeGesture() {
+        if photoImage.frame.origin.y == memoBackView.frame.origin.y {
+            // キーボード入力中は不可
+            return;
+        }
+        load(select:PhotoCollection.getSelectNum() + 1);
+    }
+    
+    /**
+     * イメージタップ
+     */
+    @objc func imageViewTap(_ sender: UITapGestureRecognizer) {
+        if sender.view!.tag == 2 {
+            performSegue(withIdentifier: "toMemoSelectViewController", sender: self)
+        }
+    }
+    
+    /**
+     * キーボード表示イベント
+     */
+    @objc private func keyboardWasShown() {
+        // メモ関連ViewをphotoImageのtopまで移動
+        memoTextView.frame = CGRect(
+            x: memoTextView.frame.origin.x,
+            y: photoImage.frame.origin.y + 10,
+            width: memoTextView.frame.size.width,
+            height: memoTextView.frame.size.height)
+        
+        memoBackView.frame = CGRect(
+            x: memoBackView.frame.origin.x,
+            y: photoImage.frame.origin.y,
+            width: memoBackView.frame.size.width,
+            height: memoBackView.frame.size.height)
+        
+        inputCompButton.isHidden = false
+        shareButton.isHidden = true
+    }
+    
+    /**
+     * キーボード非表示イベント
+     */
+    @objc private func keyboardWillBeHidden() {
+        
+        // メモ関連Viewを元の位置に戻す
+        memoTextView.frame = CGRect(
+            x: memoTextView.frame.origin.x,
+            y: photoImage.frame.origin.y + photoImage.frame.origin.y + 20,
+            width: memoTextView.frame.size.width,
+            height: memoTextView.frame.size.height)
+        
+        memoBackView.frame = CGRect(
+            x: memoBackView.frame.origin.x,
+            y: photoImage.frame.origin.y + photoImage.frame.size.height + 10,
+            width: memoBackView.frame.size.width,
+            height: memoBackView.frame.size.height)
+        
+        inputCompButton.isHidden = true
+        shareButton.isHidden = false
+    }
+    
+    /**
+     * CollectionView 操作時のロード処理
+     */
+    private func load(select: NSInteger) {
+        
+        let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
+        if 0 <= select && select < assets.count {
+            
+            // 選択位置の更新
+            PhotoCollection.setSelectNum(num: select)
+            
+            // 表示画像取得
+            let asset = assets.object(at: PhotoCollection.getSelectNum())
+            let options = PHImageRequestOptions()
+            options.isNetworkAccessAllowed = true
+            PHImageManager().requestImage(for: asset,
+                                          targetSize: photoImage.frame.size,
+                                          contentMode: .aspectFit,
+                                          options: options,
+                                          resultHandler: { (image, info) in
+                                            self.photoImage.image = image
+            })
+            // todo メモデータの更新
+            
+            // 動画マーク設定
+            if asset.mediaType == .video {
+                photoImageMovieMark.isHidden = false;
+            } else {
+                photoImageMovieMark.isHidden = true;
+            }
+            // ファイル生成日表示
+            if asset.creationDate != nil {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy/MM/dd HH:mm"
+                self.createDateView.text = formatter.string(from: asset.creationDate!)
+            }
+            
+            collectionView.reloadData()
+        }
+    }
 }

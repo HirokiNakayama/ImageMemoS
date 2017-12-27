@@ -47,11 +47,7 @@ class AlbumListViewController: UIViewController, UITableViewDelegate, UITableVie
             with: .album, subtype: .any, options: options)
         
         for i in 0 ..< assetCollections.count {
-            let collection = assetCollections.object(at: i)
-            
-            if PhotoCollection.isAllPhotos(collection: collection) {
-                albumList.add(collection)
-            }
+            albumList.add(assetCollections.object(at: i))
         }
     }
     
