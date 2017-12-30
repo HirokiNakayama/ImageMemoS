@@ -211,7 +211,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
                 return
             }
             
-            if let type = activityType, type.rawValue == "google.Drive" {
+            if let type = activityType, type.rawValue == "com.google.Drive.ShareExtension" {
                 deleteArray.forEach { obj in
                     self.deleteImage(asset: obj as! PHAsset)
                 }

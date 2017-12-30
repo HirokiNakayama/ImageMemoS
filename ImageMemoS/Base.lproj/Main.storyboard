@@ -212,7 +212,7 @@
         <!--Image View Controller-->
         <scene sceneID="84L-XH-bJe">
             <objects>
-                <viewController id="Wes-Gw-wFh" customClass="ImageViewController" sceneMemberID="viewController">
+                <viewController id="Wes-Gw-wFh" customClass="ImageViewController" customModule="ImageMemoS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tDX-7W-RyH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +232,7 @@
                                         </constraints>
                                         <state key="normal" image="navibar_close.png"/>
                                         <connections>
-                                            <action selector="closeTouchUpInside:" destination="Wes-Gw-wFh" eventType="touchUpInside" id="X2z-sf-1V0"/>
+                                            <action selector="exitTouchUpInside:" destination="Wes-Gw-wFh" eventType="touchUpInside" id="6Kp-L2-MOi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-Dr-jpC">
@@ -271,10 +271,10 @@
                         <viewLayoutGuide key="safeArea" id="Im0-bP-1Ob"/>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="13F-bx-3J1" id="vuI-pe-iRE"/>
-                        <outlet property="photoImage" destination="npU-tO-nPD" id="hgu-m0-eQG"/>
-                        <outlet property="playButton" destination="0cv-Dr-jpC" id="v5a-hC-dlj"/>
-                        <outlet property="scrollView" destination="5Ei-kg-aQU" id="CcF-ph-ypp"/>
+                        <outlet property="closeButton" destination="13F-bx-3J1" id="077-ZG-JO4"/>
+                        <outlet property="photoImage" destination="npU-tO-nPD" id="duJ-MI-j2D"/>
+                        <outlet property="playButton" destination="0cv-Dr-jpC" id="9T4-qd-PTa"/>
+                        <outlet property="scrollView" destination="5Ei-kg-aQU" id="Y90-nq-AB0"/>
                         <segue destination="tkO-py-iCA" kind="show" identifier="toPlayerViewController" id="A8D-c0-gCi"/>
                     </connections>
                 </viewController>
@@ -319,7 +319,6 @@
                                 </constraints>
                                 <state key="normal" image="navibar_back.png"/>
                                 <connections>
-                                    <action selector="backButtonTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="EHH-R0-Dt7"/>
                                     <action selector="exitTouchUpInside:" destination="3US-YO-ZYr" eventType="touchUpInside" id="MDi-lR-hzY"/>
                                 </connections>
                             </button>
@@ -376,9 +375,8 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJA-A0-8vb">
-                                <rect key="frame" x="152.5" y="79.5" width="70" height="70"/>
+                                <rect key="frame" x="187.5" y="79.5" width="0.0" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="9as-Au-df6"/>
                                     <constraint firstAttribute="height" constant="70" id="Xsw-N3-cPv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -399,12 +397,12 @@
                                     <constraint firstAttribute="height" constant="60" id="fkb-o2-f1N"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.29999999999999999" contentMode="scaleToFill" text="2018/11/29 14:16" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q2p-W2-gRB" userLabel="撮影日Text">
-                                <rect key="frame" x="229" y="336" width="126" height="33"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.29999999999999999" contentMode="scaleToFill" text="2018/11/29 14:16" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q2p-W2-gRB" userLabel="create date Text">
+                                <rect key="frame" x="211" y="336" width="144" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="Zl5-sx-pwB"/>
-                                    <constraint firstAttribute="width" constant="126" id="tKv-8c-fsi"/>
+                                    <constraint firstAttribute="width" constant="144" id="tKv-8c-fsi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -454,6 +452,7 @@
                             <constraint firstItem="ehL-CI-KEa" firstAttribute="top" secondItem="r2I-zH-E3Q" secondAttribute="bottom" constant="10" id="sMB-1l-lJK"/>
                             <constraint firstItem="kkd-j7-qrh" firstAttribute="trailing" secondItem="Q2p-W2-gRB" secondAttribute="trailing" constant="20" id="u3X-3L-ddz"/>
                             <constraint firstItem="PwB-Rg-Nsb" firstAttribute="leading" secondItem="kkd-j7-qrh" secondAttribute="leading" id="vNc-QD-mTF"/>
+                            <constraint firstItem="Uco-9f-ZSe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5qJ-s9-MnZ" secondAttribute="leading" constant="20" symbolic="YES" id="xkC-vR-U0I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kkd-j7-qrh"/>
                     </view>
@@ -467,11 +466,12 @@
                         <outlet property="photoImageMovieMark" destination="x6N-OY-YJ3" id="QbA-gq-vqM"/>
                         <outlet property="selectImageBorder" destination="aJA-A0-8vb" id="Ccs-xF-8uz"/>
                         <outlet property="shareButton" destination="bhm-X6-zwQ" id="xP9-GT-sKg"/>
+                        <segue destination="Wes-Gw-wFh" kind="show" identifier="toImageViewController" id="4Uw-X1-s62"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNR-Zj-aXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2026" y="117"/>
+            <point key="canvasLocation" x="2024.8" y="116.49175412293854"/>
         </scene>
     </scenes>
     <resources>

@@ -136,21 +136,65 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
         }
     }
     
+    /**
+     * (delegate) 入力完了ボタンタップ
+     */
     @IBAction func inputCompTouchUpInside(_ sender: Any) {
         // todo メモの保存
         
         // キーボードを閉じる
-        resignFirstResponder()
+        memoTextView.resignFirstResponder()
         
         // チェックマーク更新のためリロード
         collectionView.reloadData();
     }
     
+    /**
+     * (delegate) シェアボタンタップ
+     */
     @IBAction func shareTouchUpInside(_ sender: Any) {
         
+        var shareItems: NSArray?
+        var shareText: String?
+        
+        if memoTextView.text.utf16.count > 0 {
+            shareText = memoTextView.text;
+        }
+        // 共有する項目
+        if let text = shareText {
+            shareItems = [text, photoImage.image as Any];
+        } else {
+            shareItems = [photoImage.image as Any];
+        }
+        
+        let activityView = UIActivityViewController(activityItems: shareItems as! [Any], applicationActivities: nil)
+        
+        // 使用しないアクティビティタイプ
+        activityView.excludedActivityTypes = [
+            .postToFacebook,
+            .postToTwitter,
+            .postToWeibo,
+            .message,
+            .mail,
+            .print,
+            .assignToContact,
+            .copyToPasteboard,
+            .saveToCameraRoll,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo,
+            .postToTencentWeibo,
+            .airDrop,
+            .openInIBooks]
+        
+        present(activityView, animated: true, completion: nil)
     }
     
+    /**
+     * (delegate) 戻るボタンタップ
+     */
     @IBAction func exitTouchUpInside(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -181,7 +225,7 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
      */
     @objc func imageViewTap(_ sender: UITapGestureRecognizer) {
         if sender.view!.tag == 2 {
-            performSegue(withIdentifier: "toMemoSelectViewController", sender: self)
+            performSegue(withIdentifier: "toImageViewController", sender: self)
         }
     }
     
@@ -214,7 +258,7 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
         // メモ関連Viewを元の位置に戻す
         memoTextView.frame = CGRect(
             x: memoTextView.frame.origin.x,
-            y: photoImage.frame.origin.y + photoImage.frame.origin.y + 20,
+            y: photoImage.frame.origin.y + photoImage.frame.size.height + 20,
             width: memoTextView.frame.size.width,
             height: memoTextView.frame.size.height)
         
@@ -235,7 +279,6 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
         
         let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
         if 0 <= select && select < assets.count {
-            
             // 選択位置の更新
             PhotoCollection.setSelectNum(num: select)
             
