@@ -114,6 +114,14 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
 
     /**
+     * (delegate) 再生ボタンボタンタップ
+     */
+    @IBAction func playTouchUpInside(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toPlayerViewController", sender: self)
+    }
+    
+    /**
      * (delegate) 戻るボタンタップ
      */
     @IBAction func exitTouchUpInside(_ sender: Any) {

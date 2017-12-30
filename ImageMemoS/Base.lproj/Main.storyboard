@@ -243,7 +243,7 @@
                                         </constraints>
                                         <state key="normal" image="player_play.png"/>
                                         <connections>
-                                            <action selector="playTouchUpInside:" destination="Wes-Gw-wFh" eventType="touchUpInside" id="on8-1c-GyG"/>
+                                            <action selector="playTouchUpInside:" destination="Wes-Gw-wFh" eventType="touchUpInside" id="6c3-6i-qaO"/>
                                         </connections>
                                     </button>
                                 </subviews>

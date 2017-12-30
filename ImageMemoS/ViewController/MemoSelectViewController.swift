@@ -37,7 +37,7 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
         shareButton.isHidden = false
         
         // 画像タップイベント設定
-        photoImage.isUserInteractionEnabled = true;
+        photoImage.isUserInteractionEnabled = true
         let singleTap = UITapGestureRecognizer(
             target: self, action: #selector(imageViewTap(_:)))
         photoImage.addGestureRecognizer(singleTap)
@@ -49,13 +49,21 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
             self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
         
         // スワイプイベント設定
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(rightSwipeGesture))
+        let rightSwipe = UISwipeGestureRecognizer(
+            target: self, action: #selector(rightSwipeGesture))
         rightSwipe.direction = .right
         view.addGestureRecognizer(rightSwipe)
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipeGesture))
+        let leftSwipe = UISwipeGestureRecognizer(
+            target: self, action: #selector(leftSwipeGesture))
         leftSwipe.direction = .left
         view.addGestureRecognizer(leftSwipe)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        load(select: PhotoCollection.getSelectNum())
     }
     
     override func didReceiveMemoryWarning() {
