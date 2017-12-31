@@ -126,7 +126,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             // 画像の保存
             PhotoCollection.setSelectNum(num: indexPath.row)
             
-            performSegue(withIdentifier: "toMemoSelectViewController", sender: self)
+            performSegue(withIdentifier: "toImageViewController", sender: self)
         } else {
             if selectArray.contains(indexPath) {
                 selectArray.remove(indexPath)

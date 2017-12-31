@@ -15,6 +15,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var memoButton: UIButton!
     
     private var timer: Timer!
     
@@ -67,6 +68,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
             playButton.isHidden = true
         }
         closeButton.isHidden = false
+        memoButton.isHidden = false
     }
     
     /**
@@ -98,6 +100,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc private func timerComplete() {
         closeButton.isHidden = true
+        memoButton.isHidden = true
         
         let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
         let asset = assets.object(at: PhotoCollection.getSelectNum())
@@ -119,6 +122,14 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func playTouchUpInside(_ sender: Any) {
         
         performSegue(withIdentifier: "toPlayerViewController", sender: self)
+    }
+    
+    /**
+     * (delegate) メモボタンタップ
+     */
+    @IBAction func memoTouchUpInside(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toMemoEditViewController", sender: self)
     }
     
     /**

@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class MemoEditViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var selectImageBorder: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
