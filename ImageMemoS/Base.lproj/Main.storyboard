@@ -204,7 +204,7 @@
         <!--AV Player View Controller-->
         <scene sceneID="uQY-yG-lqb">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="tkO-py-iCA" customClass="PlayerViewController" sceneMemberID="viewController"/>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="tkO-py-iCA" customClass="PlayerViewController" customModule="ImageMemoS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZNu-qQ-tu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3911" y="117"/>
