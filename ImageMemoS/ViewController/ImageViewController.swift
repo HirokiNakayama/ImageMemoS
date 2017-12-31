@@ -24,7 +24,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         
         // 画像タップイベント設定
-        photoImage.isUserInteractionEnabled = true;
+        photoImage.isUserInteractionEnabled = true
         let singleTap = UITapGestureRecognizer(
             target: self, action: #selector(imageViewTap))
         photoImage.addGestureRecognizer(singleTap)

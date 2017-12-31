@@ -75,7 +75,7 @@ class AlbumListViewController: UIViewController, UITableViewDelegate, UITableVie
             "%@　(%lu)", PhotoCollection.getTitle(collection: collection), assets.count)
         
         let options = PHImageRequestOptions()
-        options.isNetworkAccessAllowed = true;
+        options.isNetworkAccessAllowed = true
         
         PHImageManager().requestImage(for: assets.firstObject!,
             targetSize: cell.frame.size,
@@ -86,9 +86,9 @@ class AlbumListViewController: UIViewController, UITableViewDelegate, UITableVie
             })
         
         // 選択された背景色を白に設定
-        let cellSelectedBgView = UIView();
-        cellSelectedBgView.backgroundColor = UIColor.white;
-        cell.selectedBackgroundView = cellSelectedBgView;
+        let cellSelectedBgView = UIView()
+        cellSelectedBgView.backgroundColor = UIColor.white
+        cell.selectedBackgroundView = cellSelectedBgView
         
         return cell
     }

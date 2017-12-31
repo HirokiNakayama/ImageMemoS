@@ -21,7 +21,7 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
     @IBOutlet weak var photoImageMovieMark: UIImageView!
     @IBOutlet weak var createDateView: UITextView!
     
-    private let MAX_HEADER_IMAGE_COUNT: Int = 5;
+    private let MAX_HEADER_IMAGE_COUNT: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,10 +76,10 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
      */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
-        var count = assets.count;
+        var count = assets.count
         // 最大５画像表示
-        if (count > MAX_HEADER_IMAGE_COUNT) {
-            count = MAX_HEADER_IMAGE_COUNT;
+        if count > MAX_HEADER_IMAGE_COUNT {
+            count = MAX_HEADER_IMAGE_COUNT
         }
         return count
     }
@@ -123,7 +123,7 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
             
             // 動画マーク設定
             if asset.mediaType == .video {
-                movieView.isHidden = false;
+                movieView.isHidden = false
             }
         }
         return cell
@@ -135,12 +135,12 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if photoImage.frame.origin.y == memoBackView.frame.origin.y {
             // キーボード入力中はタップ不可
-            return;
+            return
         }
         
-        let select = (PhotoCollection.getSelectNum() - ((MAX_HEADER_IMAGE_COUNT - 1) / 2)) + indexPath.row;
-        if (0 <= select) {
-            load(select: select);
+        let select = (PhotoCollection.getSelectNum() - ((MAX_HEADER_IMAGE_COUNT - 1) / 2)) + indexPath.row
+        if 0 <= select {
+            load(select: select)
         }
     }
     
@@ -154,7 +154,7 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
         memoTextView.resignFirstResponder()
         
         // チェックマーク更新のためリロード
-        collectionView.reloadData();
+        collectionView.reloadData()
     }
     
     /**
@@ -166,13 +166,13 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
         var shareText: String?
         
         if memoTextView.text.utf16.count > 0 {
-            shareText = memoTextView.text;
+            shareText = memoTextView.text
         }
         // 共有する項目
         if let text = shareText {
-            shareItems = [text, photoImage.image as Any];
+            shareItems = [text, photoImage.image as Any]
         } else {
-            shareItems = [photoImage.image as Any];
+            shareItems = [photoImage.image as Any]
         }
         
         let activityView = UIActivityViewController(activityItems: shareItems as! [Any], applicationActivities: nil)
@@ -212,9 +212,9 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
     @objc private func rightSwipeGesture() {
         if photoImage.frame.origin.y == memoBackView.frame.origin.y {
             // キーボード入力中は不可
-            return;
+            return
         }
-        load(select:PhotoCollection.getSelectNum() - 1);
+        load(select:PhotoCollection.getSelectNum() - 1)
     }
     
     /**
@@ -223,9 +223,9 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
     @objc private func leftSwipeGesture() {
         if photoImage.frame.origin.y == memoBackView.frame.origin.y {
             // キーボード入力中は不可
-            return;
+            return
         }
-        load(select:PhotoCollection.getSelectNum() + 1);
+        load(select:PhotoCollection.getSelectNum() + 1)
     }
     
     /**
@@ -305,9 +305,9 @@ class MemoSelectViewController: UIViewController, UIGestureRecognizerDelegate, U
             
             // 動画マーク設定
             if asset.mediaType == .video {
-                photoImageMovieMark.isHidden = false;
+                photoImageMovieMark.isHidden = false
             } else {
-                photoImageMovieMark.isHidden = true;
+                photoImageMovieMark.isHidden = true
             }
             // ファイル生成日表示
             if asset.creationDate != nil {

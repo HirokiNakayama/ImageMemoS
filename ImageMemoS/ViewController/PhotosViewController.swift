@@ -44,7 +44,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewWillAppear(animated)
         
         // メモ有りチェック振り直しのためリロード
-        collectionView.reloadData();
+        collectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -232,7 +232,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             PHAssetChangeRequest.deleteAssets([asset] as NSArray)
             
         }, completionHandler: { (success, error) -> Void in
-            if (success) {
+            if success {
                 // main thread で実行
                 DispatchQueue.global().async {
                     DispatchQueue.main.async {
