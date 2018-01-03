@@ -150,10 +150,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_mark.png" translatesAutoresizingMaskIntoConstraints="NO" id="tNq-DY-BP3">
-                                                    <rect key="frame" x="42" y="42" width="40" height="40"/>
+                                                    <rect key="frame" x="32" y="32" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="I8I-ei-CUp"/>
-                                                        <constraint firstAttribute="width" constant="40" id="vpX-Fd-okz"/>
+                                                        <constraint firstAttribute="height" constant="60" id="I8I-ei-CUp"/>
+                                                        <constraint firstAttribute="width" constant="60" id="vpX-Fd-okz"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -494,7 +494,7 @@
         <image name="memo_button.png" width="48" height="48"/>
         <image name="memo_mark.png" width="48" height="48"/>
         <image name="player_play.png" width="128" height="128"/>
-        <image name="select_mark.png" width="256" height="256"/>
+        <image name="select_mark.png" width="64" height="64"/>
         <image name="setting_button.png" width="48" height="48"/>
         <image name="share_button.png" width="48" height="48"/>
     </resources>
