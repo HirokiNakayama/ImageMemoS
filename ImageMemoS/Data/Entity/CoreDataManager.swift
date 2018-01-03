@@ -21,7 +21,7 @@ class CoreDataManager {
         do {
             let results = try managedObjectContext.fetch(createFetchRequest(fileName: fileName))
             for managedObject in results {
-                managedObjectContext.delete(managedObject as! PhotoEntity);
+                managedObjectContext.delete(managedObject as! PhotoEntity)
             }
         } catch {
             
@@ -47,7 +47,7 @@ class CoreDataManager {
         do {
             let results = try managedObjectContext.fetch(createFetchRequest(fileName: fileName))
             for managedObject in results {
-                return (managedObject as! PhotoEntity).memo!;
+                return (managedObject as! PhotoEntity).memo!
             }
         } catch {
             
@@ -62,10 +62,10 @@ class CoreDataManager {
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
         
-        let entityDiscription = NSEntityDescription.entity(forEntityName: "Entity", in: managedObjectContext);
+        let entityDiscription = NSEntityDescription.entity(forEntityName: "Entity", in: managedObjectContext)
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>();
-        fetchRequest.entity = entityDiscription;
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = entityDiscription
         
         let predicate = NSPredicate(format: "fileName = %@", fileName)
         fetchRequest.predicate = predicate

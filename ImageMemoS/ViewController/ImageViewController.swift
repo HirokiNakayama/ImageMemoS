@@ -59,12 +59,8 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
      * 画像タップ
      */
     @objc private func imageViewTap() {
-        // タイマー設定
-        if timer != nil && timer.isValid {
-            timer.invalidate()
-        }
-        timer = Timer(timeInterval: 5.0, target: self,
-                      selector: #selector(timerComplete), userInfo: nil, repeats: false)
+        // タイマー開始
+        startTimer()
         
         let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
         let asset = assets.object(at: PhotoCollection.getSelectNum())
@@ -171,12 +167,20 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
             if asset.mediaType == .video {
                 playButton.isHidden = false
             }
-            // タイマー設定
-            if timer != nil && timer.isValid {
-                timer.invalidate()
-            }
-            timer = Timer(timeInterval: 5.0, target: self,
-                          selector: #selector(timerComplete), userInfo: nil, repeats: false)
+            // タイマー開始
+            startTimer()
         }
+    }
+    
+    /**
+     * タイマー開始
+     */
+    private func startTimer() {
+        if timer != nil {
+            timer.invalidate()
+        }
+        // タイマー設定
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self,
+                                     selector: #selector(timerComplete), userInfo: nil, repeats: false)
     }
 }
