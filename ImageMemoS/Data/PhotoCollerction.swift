@@ -6,7 +6,6 @@
 //  Copyright © 2017年 中山浩樹. All rights reserved.
 //
 
-import Foundation
 import Photos
 
 class PhotoCollection {
@@ -43,6 +42,19 @@ class PhotoCollection {
         let title: NSString = collection.localizedTitle! as NSString
         
         if title.isEqual(to: "All Photos") || title.isEqual(to: "Camera Roll") {
+            return true
+        }
+        return false
+    }
+    
+    public static func getFileName(asset: PHAsset) -> String {
+
+        return asset.value(forKey: "filename") as! String
+    }
+    
+    public static func isMemoEnable(asset: PHAsset) -> Bool {
+        if (CoreDataManager.getMemo(
+            fileName: asset.value(forKey: "filename") as! String)).utf16.count > 0 {
             return true
         }
         return false

@@ -42,10 +42,14 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipeGesture))
         leftSwipe.direction = .left
         view.addGestureRecognizer(leftSwipe)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         load(select: PhotoCollection.getSelectNum())
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

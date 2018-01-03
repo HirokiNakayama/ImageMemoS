@@ -105,7 +105,9 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         if !selectingMode {
             selectView.isHidden = true
             // メモ済みマーク設定
-            checkView.isHidden = true
+            if PhotoCollection.isMemoEnable(asset: asset) {
+                checkView.isHidden = false
+            }
         } else {
             // 画像選択マーク設定
             if selectArray.contains(indexPath) {

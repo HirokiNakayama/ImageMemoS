@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5213A75C1FEBEDD2002F467C /* ImageMemoS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5213A75A1FEBEDD2002F467C /* ImageMemoS.xcdatamodeld */; };
 		5257B1D71FEF5C2400B0607F /* select_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5257B1CF1FEF5C2300B0607F /* select_mark.png */; };
 		5257B1D81FEF5C2400B0607F /* memo_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5257B1D01FEF5C2300B0607F /* memo_mark.png */; };
 		5257B1DD1FEF5C2400B0607F /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 5257B1D51FEF5C2400B0607F /* splash.png */; };
@@ -29,6 +28,8 @@
 		52E6A3041FF9237D006F3BB6 /* setting_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E6A2FF1FF9237C006F3BB6 /* setting_button.png */; };
 		52E6A3051FF9237D006F3BB6 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E6A3001FF9237C006F3BB6 /* back_button.png */; };
 		52E6A3061FF9237D006F3BB6 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E6A3011FF9237C006F3BB6 /* close_button.png */; };
+		52E6A30B1FFA59FA006F3BB6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E6A30A1FFA59FA006F3BB6 /* CoreDataManager.swift */; };
+		52FEAC5A1FFD09CA000BBB76 /* ImageMemoS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52FEAC581FFD09CA000BBB76 /* ImageMemoS.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5213A75B1FEBEDD2002F467C /* ImageMemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageMemo.xcdatamodel; sourceTree = "<group>"; };
 		5257B1CF1FEF5C2300B0607F /* select_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_mark.png; sourceTree = "<group>"; };
 		5257B1D01FEF5C2300B0607F /* memo_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = memo_mark.png; sourceTree = "<group>"; };
 		5257B1D51FEF5C2400B0607F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
@@ -75,6 +75,8 @@
 		52E6A2FF1FF9237C006F3BB6 /* setting_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_button.png; sourceTree = "<group>"; };
 		52E6A3001FF9237C006F3BB6 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		52E6A3011FF9237C006F3BB6 /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button.png; sourceTree = "<group>"; };
+		52E6A30A1FFA59FA006F3BB6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		52FEAC591FFD09CA000BBB76 /* ImageMemoS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageMemoS.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +125,7 @@
 		5263F43B1FEBDD82006DEFC0 /* ImageMemoS */ = {
 			isa = PBXGroup;
 			children = (
-				5213A75A1FEBEDD2002F467C /* ImageMemoS.xcdatamodeld */,
+				52FEAC581FFD09CA000BBB76 /* ImageMemoS.xcdatamodeld */,
 				5263F4701FEBDED5006DEFC0 /* Resouce */,
 				5263F46E1FEBDEB7006DEFC0 /* ViewController */,
 				5263F46D1FEBDEAC006DEFC0 /* Data */,
@@ -139,6 +141,7 @@
 		5263F46D1FEBDEAC006DEFC0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				52E6A3071FFA58C7006F3BB6 /* Entity */,
 				5257B1DF1FEF5C6A00B0607F /* PhotoCollerction.swift */,
 			);
 			path = Data;
@@ -171,6 +174,14 @@
 				5257B1D51FEF5C2400B0607F /* splash.png */,
 			);
 			path = Resouce;
+			sourceTree = "<group>";
+		};
+		52E6A3071FFA58C7006F3BB6 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				52E6A30A1FFA59FA006F3BB6 /* CoreDataManager.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		52FB940E1FEBE560005FC64B /* Cell */ = {
@@ -334,7 +345,8 @@
 				52D936BD1FF27FD500C6F6E8 /* PlayerViewController.swift in Sources */,
 				5263F43D1FEBDD82006DEFC0 /* AppDelegate.swift in Sources */,
 				52D936BB1FF27FB500C6F6E8 /* ImageViewController.swift in Sources */,
-				5213A75C1FEBEDD2002F467C /* ImageMemoS.xcdatamodeld in Sources */,
+				52E6A30B1FFA59FA006F3BB6 /* CoreDataManager.swift in Sources */,
+				52FEAC5A1FFD09CA000BBB76 /* ImageMemoS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,12 +644,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5213A75A1FEBEDD2002F467C /* ImageMemoS.xcdatamodeld */ = {
+		52FEAC581FFD09CA000BBB76 /* ImageMemoS.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5213A75B1FEBEDD2002F467C /* ImageMemo.xcdatamodel */,
+				52FEAC591FFD09CA000BBB76 /* ImageMemoS.xcdatamodel */,
 			);
-			currentVersion = 5213A75B1FEBEDD2002F467C /* ImageMemo.xcdatamodel */;
+			currentVersion = 52FEAC591FFD09CA000BBB76 /* ImageMemoS.xcdatamodel */;
 			path = ImageMemoS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

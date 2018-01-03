@@ -119,8 +119,9 @@ class MemoEditViewController: UIViewController, UIGestureRecognizerDelegate, UIC
                                             }
             })
             // メモ済みマーク設定
-            checkView.isHidden = true
-            
+            if PhotoCollection.isMemoEnable(asset: asset) {
+                checkView.isHidden = false
+            }
             // 動画マーク設定
             if asset.mediaType == .video {
                 movieView.isHidden = false
@@ -148,7 +149,9 @@ class MemoEditViewController: UIViewController, UIGestureRecognizerDelegate, UIC
      * (delegate) 入力完了ボタンタップ
      */
     @IBAction func inputCompTouchUpInside(_ sender: Any) {
-        // todo メモの保存
+        let assets = PHAsset.fetchAssets(in: PhotoCollection.getCorrection(), options: nil)
+        let asset = assets.object(at: PhotoCollection.getSelectNum())
+        CoreDataManager.save(fileName: asset.value(forKey: "filename") as! String, memo: memoTextView.text)
         
         // キーボードを閉じる
         memoTextView.resignFirstResponder()
@@ -301,7 +304,9 @@ class MemoEditViewController: UIViewController, UIGestureRecognizerDelegate, UIC
                                           resultHandler: { (image, info) in
                                             self.photoImage.image = image
             })
-            // todo メモデータの更新
+            // メモデータの更新
+            memoTextView.text = CoreDataManager.getMemo(
+                fileName: PhotoCollection.getFileName(asset: asset))
             
             // 動画マーク設定
             if asset.mediaType == .video {
