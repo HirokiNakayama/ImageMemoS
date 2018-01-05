@@ -112,7 +112,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     /**
      * (delegate) ズームイン用
      */
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return photoImage
     }
 
