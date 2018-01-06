@@ -29,6 +29,7 @@
 		52FEAC5A1FFD09CA000BBB76 /* ImageMemoS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52FEAC581FFD09CA000BBB76 /* ImageMemoS.xcdatamodeld */; };
 		52FEAC621FFD1ABF000BBB76 /* memo_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FEAC601FFD1ABE000BBB76 /* memo_mark.png */; };
 		52FEAC631FFD1ABF000BBB76 /* select_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FEAC611FFD1ABE000BBB76 /* select_mark.png */; };
+		52FEAC6520010C5D000BBB76 /* feature.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52FEAC6420010C5C000BBB76 /* feature.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		52FEAC591FFD09CA000BBB76 /* ImageMemoS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageMemoS.xcdatamodel; sourceTree = "<group>"; };
 		52FEAC601FFD1ABE000BBB76 /* memo_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = memo_mark.png; sourceTree = "<group>"; };
 		52FEAC611FFD1ABE000BBB76 /* select_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_mark.png; sourceTree = "<group>"; };
+		52FEAC6420010C5C000BBB76 /* feature.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = feature.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		5263F4301FEBDD82006DEFC0 = {
 			isa = PBXGroup;
 			children = (
+				52FEAC6420010C5C000BBB76 /* feature.txt */,
 				5263F43B1FEBDD82006DEFC0 /* ImageMemoS */,
 				5263F43A1FEBDD82006DEFC0 /* Products */,
 			);
@@ -307,6 +310,7 @@
 				5263F4471FEBDD82006DEFC0 /* Assets.xcassets in Resources */,
 				52E6A3061FF9237D006F3BB6 /* close_button.png in Resources */,
 				5263F4421FEBDD82006DEFC0 /* Main.storyboard in Resources */,
+				52FEAC6520010C5D000BBB76 /* feature.txt in Resources */,
 				5257B1E21FEF90D700B0607F /* AlbumTableViewCell.xib in Resources */,
 				52E6A3031FF9237D006F3BB6 /* share_button.png in Resources */,
 			);
