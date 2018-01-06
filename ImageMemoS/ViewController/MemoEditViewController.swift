@@ -29,10 +29,6 @@ class MemoEditViewController: UIViewController, UIGestureRecognizerDelegate, UIC
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        // 選択中の画像囲みボーダー設定
-        selectImageBorder.layer.borderColor = UIColor.green.cgColor
-        selectImageBorder.layer.borderWidth = 2.0
-        
         inputCompButton.isHidden = true
         shareButton.isHidden = false
         

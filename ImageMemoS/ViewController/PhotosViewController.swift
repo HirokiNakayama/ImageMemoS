@@ -15,6 +15,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var selectCancelButton: UIButton!
+    @IBOutlet weak var menuView: UIView!
     
     private var selectingMode: Bool!
     private var selectingCell: Bool!
@@ -35,9 +37,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         selectingMode = false
         selectingCell = false
         selectArray = nil
-        
-        shareButton.isHidden = true
-        settingButton.isHidden = false
+                
+        changeSelectMode(selectMode: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,14 +51,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    /**
-     * (delegate) 戻るボタンタップ
-     */
-    @IBAction func exitTouchUpInside(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
     }
     
     /**
@@ -225,6 +218,22 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     /**
+     * (delegate) 戻るボタンタップ
+     */
+    @IBAction func exitTouchUpInside(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    /**
+     * (delegate) 画像選択キャンセルボタンタップ
+     */
+    @IBAction func selectCancelTouchUpInside(_ sender: Any) {
+        
+        changeSelectMode(selectMode: false)
+    }
+    
+    /**
      * イメージの削除
      */
     private func deleteImage(asset: PHAsset) {
@@ -257,20 +266,19 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
                 selectArray = NSMutableArray()
             }
             selectingMode = true
-            shareButton.isHidden = false
+            menuView.isHidden = false
             settingButton.isHidden = true
-            collectionView.reloadData()
         } else {
-            // 選択モードなら元に戻す
-            if selectingMode {
-                selectingMode = false
-                shareButton.isHidden = true
-                settingButton.isHidden = false
-            }
+            // 通常モード
+            selectingMode = false
+            menuView.isHidden = true
+            settingButton.isHidden = false
+            
             if selectArray != nil {
                 selectArray.removeAllObjects()
                 selectArray = nil
             }
         }
+        collectionView.reloadData()
     }
 }
